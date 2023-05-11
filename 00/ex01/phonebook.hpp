@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:52:58 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/11 14:53:08 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/11 17:33:11 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,27 @@
 
 class	ContactClass
 {
+
 	public:
-		int			index;
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
-		std::string	phone_number;
-		std::string	darkest_secret;
+	std::string	first_name;
+	std::string	last_name;
+	std::string	nickname;
+	std::string	phone_number;
+	std::string	darkest_secret;
+	int			index;
+		int			getIndex() { return index; }
+		std::string	getFirstName() { return first_name; }
+		std::string	getLastName() { return last_name; }
+		std::string getNickname() { return nickname; }
+		std::string getPhoneNumber() { return phone_number; }
+		std::string getDarkestSecret() { return darkest_secret; }
+
+		void		setIndex(int i) { index = i; }
+		void		setFirstName(std::string s) { first_name = s; }
+		void		setLastName(std::string s) { last_name = s; }
+		void		setNickname(std::string s) { nickname = s; }
+		void		setPhoneNumber(std::string s) { phone_number = s; }
+		void		setDarkestSecret(std::string s) { darkest_secret = s; }
 		// Contact();
 		// ~Contact();
 };

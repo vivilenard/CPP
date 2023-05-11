@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:52:25 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/11 15:07:45 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/11 17:36:23 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ PhoneBook::PhoneBook(void)
 	return ;
 }
 
+// std::string	get_instream()
+// {
+	
+// }
+
 void	PhoneBook::add(void)
 {
 	std::cout << "first name:	";
+	//contact[current_page].setFirstName(get_instream());
 	std::cin >> contact[current_page].first_name;
 	std::cout << "last name:	";
 	std::cin >> contact[current_page].last_name;
