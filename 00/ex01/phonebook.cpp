@@ -6,18 +6,11 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:52:25 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/12 16:50:51 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/12 18:23:43 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-
-PhoneBook::PhoneBook(void)
-{
-	current_page = 0;
-	number_contacts = 0;
-	return ;
-}
 
 std::string	get_instream()
 {
@@ -28,34 +21,11 @@ std::string	get_instream()
 	return (line);
 }
 
-void	PhoneBook::add(void)
-{
-	std::cout << "first name:	";
-	contact[current_page].setFirstName(get_instream());
-	std::cout << "last name:	";
-	contact[current_page].setLastName(get_instream());
-	std::cout << "nickname:	";
-	contact[current_page].setNickname(get_instream());
-	std::cout << "phone number:	";
-	contact[current_page].setPhoneNumber(get_instream());
-	std::cout << "darkest secret:	";
-	contact[current_page].setDarkestSecret(get_instream());
-	contact[current_page].setIndex(current_page);
-	if (current_page < 7)
-	{
-		this->current_page++;
-		this->number_contacts++;
-	}
-	else
-		this->current_page = 0;
-	std::cout << "Contact added to phonebook" << std::endl;
-}
-
 void	PhoneBook::print_contact(int i)
 {
-	if (i < 1 || i > 8)
+	if (i < 1 || i > this->n_contacts)
 	{
-		std::cout << "Search with a valid number between 0 and 7" << std::endl;
+		std::cout << "Search with a valid number between 1 and 8" << std::endl;
 		return ;
 	}
 	i-=1;
@@ -82,8 +52,7 @@ std::string	PhoneBook::cutword(std::string s)
 
 void	PhoneBook::display_contact_row(ContactClass contact)
 {
-	
-	std::cout << std::setw(10) << std::right << contact.getIndex() << "|";  
+	std::cout << std::setw(10) << std::right << contact.getIndex() + 1 << "|";  
 	std::cout << std::setw(10) << std::right << cutword(contact.getFirstName()) << "|";
 	std::cout << std::setw(10) << std::right << cutword(contact.getLastName()) << "|";
 	std::cout << std::setw(10) << std::right << cutword(contact.getNickname()) << std::endl;
@@ -95,12 +64,37 @@ void	PhoneBook::search(void)
 
 	std::cout <<"     index|first name| last name|  nickname";
 	std::cout << std::endl;
-	for(int	i = 0; i < number_contacts; i++)
+	for(int	i = 0; i < this->n_contacts; i++)
+	{
+		if (contact[i].getFirstName().empty())
+			break;
 		this->display_contact_row(this->contact[i]);
+	}
 	std::cout << "Which contact do you want to look at?" << std::endl;
 	std::cout << "Choose between 1 - 8:	" << std::endl;
 	std::getline(std::cin, index);
 	print_contact(atoi(index.c_str()));
+}
+
+void	PhoneBook::add(void)
+{
+	static int	page = 0;
+	std::cout << "first name:	";
+	contact[page].setFirstName(get_instream());
+	std::cout << "last name:	";
+	contact[page].setLastName(get_instream());
+	std::cout << "nickname:	";
+	contact[page].setNickname(get_instream());
+	std::cout << "phone number:	";
+	contact[page].setPhoneNumber(get_instream());
+	std::cout << "darkest secret:	";
+	contact[page].setDarkestSecret(get_instream());
+	contact[page].setIndex(page);
+	if (page < this->n_contacts - 1)
+		page++;
+	else
+		page = 0;
+	std::cout << "Contact added to phonebook" << std::endl;
 }
 
 int	main (void)

@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:52:58 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/12 16:42:15 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/12 18:21:13 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,14 @@ class	ContactClass
 class	PhoneBook
 {
 	private:
-		ContactClass	contact[8];
-		int				current_page;
-		int				number_contacts;
-		void			display_contact_row(ContactClass contact);
-		void			print_contact(int i);
-		std::string		cutword(std::string s);
+		static const int	n_contacts = 8;
+		ContactClass		contact[n_contacts];
+		void				display_contact_row(ContactClass contact);
+		void				print_contact(int i);
+		std::string			cutword(std::string s);
 	public:
-		void			add(void);
-		void			search(void);
-		PhoneBook();
+		void				add(void);
+		void				search(void);
 };
 
 std::string	get_instream();
