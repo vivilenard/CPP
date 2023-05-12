@@ -6,7 +6,7 @@
 #    By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:24:52 by vlenard           #+#    #+#              #
-#    Updated: 2023/05/11 14:14:34 by vlenard          ###   ########.fr        #
+#    Updated: 2023/05/12 16:47:30 by vlenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = phonebook
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC =  phonebook.cpp 
+SRC =  phonebook.cpp
 
 OBJ = $(SRCS:.c=.o)
 

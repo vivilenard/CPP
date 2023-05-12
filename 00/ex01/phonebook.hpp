@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:52:58 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/12 15:59:06 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/12 16:42:15 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ class	PhoneBook
 		void			search(void);
 		PhoneBook();
 };
+
+std::string	get_instream();
 
 # endif

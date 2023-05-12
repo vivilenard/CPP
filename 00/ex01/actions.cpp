@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   actions.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 14:52:25 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/12 16:50:51 by vlenard          ###   ########.fr       */
+/*   Created: 2023/05/11 12:33:52 by vlenard           #+#    #+#             */
+/*   Updated: 2023/05/12 16:46:06 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-
-PhoneBook::PhoneBook(void)
-{
-	current_page = 0;
-	number_contacts = 0;
-	return ;
-}
-
-std::string	get_instream()
-{
-	std::string line = "";
-
-	while (line == "")
-		std::getline(std::cin, line);
-	return (line);
-}
 
 void	PhoneBook::add(void)
 {
@@ -101,22 +85,4 @@ void	PhoneBook::search(void)
 	std::cout << "Choose between 1 - 8:	" << std::endl;
 	std::getline(std::cin, index);
 	print_contact(atoi(index.c_str()));
-}
-
-int	main (void)
-{
-	PhoneBook	phonebook;
-	std::string	command;
-
-	std::cout << "type 'ADD' 'SEARCH' or 'EXIT' to use this pretty phonebook" << std::endl;
-	do
-	{
-		std::cout << "what do you want to do? ";
-		std::getline(std::cin, command);
-		if (command == "ADD")
-			phonebook.add();
-		if (command == "SEARCH")
-			phonebook.search();
-	} while (command != "EXIT");
-	return 0;
 }
