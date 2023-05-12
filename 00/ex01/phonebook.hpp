@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:52:58 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/11 17:33:11 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/12 15:59:06 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 
 # include <iostream>
 # include <iomanip>
+# include <string>
 
 class	ContactClass
 {
-
+	private:
+		int			index;
+		std::string	first_name;
+		std::string	last_name;
+		std::string	nickname;
+		std::string	phone_number;
+		std::string	darkest_secret;
 	public:
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string	darkest_secret;
-	int			index;
 		int			getIndex() { return index; }
 		std::string	getFirstName() { return first_name; }
 		std::string	getLastName() { return last_name; }
@@ -39,22 +40,21 @@ class	ContactClass
 		void		setNickname(std::string s) { nickname = s; }
 		void		setPhoneNumber(std::string s) { phone_number = s; }
 		void		setDarkestSecret(std::string s) { darkest_secret = s; }
-		// Contact();
-		// ~Contact();
 };
 
 
 class	PhoneBook
 {
-	public:
+	private:
 		ContactClass	contact[8];
 		int				current_page;
-		void			add(void);
-		void			search(void);
+		int				number_contacts;
 		void			display_contact_row(ContactClass contact);
 		void			print_contact(int i);
 		std::string		cutword(std::string s);
-		int				number_contacts;
+	public:
+		void			add(void);
+		void			search(void);
 		PhoneBook();
 };
 
