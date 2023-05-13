@@ -27,15 +27,15 @@ public:
 	static int	getTotalAmount( void );
 	static int	getNbDeposits( void );
 	static int	getNbWithdrawals( void );
-	static void	displayAccountsInfos( void );
+	static void	displayAccountsInfos( void );	//summary
 
-	Account( int initial_deposit );
-	~Account( void );
+	Account( int initial_deposit );	//anfangsueberblick tabellev (displayStatus)
+	~Account( void ); //endeueberblick tabelle (displayStatus)
 
-	void	makeDeposit( int deposit );
-	bool	makeWithdrawal( int withdrawal );
-	int		checkAmount( void ) const;
-	void	displayStatus( void ) const;
+	void	makeDeposit( int deposit );	//deposit
+	bool	makeWithdrawal( int withdrawal ); //withdrawal
+	int		checkAmount( void ) const;	//??
+	void	displayStatus( void ) const;	//ueberblick tabelle (for each)
 
 
 private:
