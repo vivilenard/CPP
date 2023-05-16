@@ -6,7 +6,7 @@
 #    By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:24:52 by vlenard           #+#    #+#              #
-#    Updated: 2023/05/16 15:16:21 by vlenard          ###   ########.fr        #
+#    Updated: 2023/05/16 15:28:09 by vlenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,3 +30,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+run: re
+	./$(NAME)
