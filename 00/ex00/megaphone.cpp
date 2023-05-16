@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:31:13 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/16 17:27:52 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/16 17:46:24 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ int	main(int argc, char **argv)
 	}
 	for (int i = 1; i < argc; i++)
 	{
-		for (int j = 0; argv[i] && argv[i][j]; j++)
+		std::string s(argv[i]);
+		for (int j = 0; j < s.size(); j++)
 		{
-			argv[i][j] = std::toupper(argv[i][j]);
-			std::cout << argv[i][j];
+			s[j] = std::toupper(s[j]);
+			std::cout << s[j];
 		}
 	}
 	std::cout << std::endl;
