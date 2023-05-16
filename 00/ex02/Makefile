@@ -6,7 +6,7 @@
 #    By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:24:52 by vlenard           #+#    #+#              #
-#    Updated: 2023/05/13 19:08:08 by vlenard          ###   ########.fr        #
+#    Updated: 2023/05/16 15:16:21 by vlenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC = tests.cpp Account.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-$(NAME) = c++ $(OBJ) $(FLAGS) -o $(NAME)
+$(NAME): $(OBJ)
+	c++ $(OBJ) $(FLAGS) -o $(NAME)
 
 all: $(NAME)
 
