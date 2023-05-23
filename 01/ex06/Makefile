@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/10 14:24:52 by vlenard           #+#    #+#              #
-#    Updated: 2023/05/16 18:35:17 by vlenard          ###   ########.fr        #
+#    Created: 2023/05/17 09:58:16 by vlenard           #+#    #+#              #
+#    Updated: 2023/05/20 14:34:12 by vlenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = harlFilter
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = phonebook.cpp utils.cpp
+SRC = main.cpp Harl.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -27,9 +27,6 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f ./$(NAME)
 
 re: fclean all
-
-run: re
-	./$(NAME)

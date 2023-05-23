@@ -6,20 +6,11 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:52:25 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/16 17:33:39 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/16 18:37:21 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-
-std::string	get_instream()
-{
-	std::string line = "";
-
-	while (line == "")
-		std::getline(std::cin, line);
-	return (line);
-}
 
 void	PhoneBook::print_contact(int i)
 {
@@ -39,23 +30,6 @@ void	PhoneBook::print_contact(int i)
 	std::cout << contact[i].getPhoneNumber() << std::endl;
 	std::cout << std::setw(15) << std::left << "darkest secret" << std::right << "|";
 	std::cout << contact[i].getDarkestSecret() << std::endl;
-}
-
-std::string	PhoneBook::cutword(std::string s)
-{
-	if (s.length() < 10)
-		return (s);
-	s.erase(9);
-	s.append(".");
-	return (s);
-}
-
-void	PhoneBook::display_contact_row(ContactClass contact)
-{
-	std::cout << std::setw(10) << std::right << contact.getIndex() + 1 << "|";  
-	std::cout << std::setw(10) << std::right << cutword(contact.getFirstName()) << "|";
-	std::cout << std::setw(10) << std::right << cutword(contact.getLastName()) << "|";
-	std::cout << std::setw(10) << std::right << cutword(contact.getNickname()) << std::endl;
 }
 
 void	PhoneBook::search(void)
@@ -79,14 +53,24 @@ void	PhoneBook::search(void)
 void	PhoneBook::add(void)
 {
 	static int	page = 0;
-	std::cout << "first name:	";
-	contact[page].setFirstName(get_instream());
-	std::cout << "last name:	";
-	contact[page].setLastName(get_instream());
+	do{
+		std::cout << "first name:	";
+		contact[page].setFirstName(get_instream());
+	} while (only_letters(contact[page].getFirstName()) == false);
+	
+	do{
+		std::cout << "last name:	";
+		contact[page].setLastName(get_instream());
+	} while (only_letters(contact[page].getLastName()) == false);
+	
 	std::cout << "nickname:	";
 	contact[page].setNickname(get_instream());
-	std::cout << "phone number:	";
-	contact[page].setPhoneNumber(get_instream());
+	
+	do{
+		std::cout << "phone number:	";
+		contact[page].setPhoneNumber(get_instream());
+	} while (only_digits_plus_extra(contact[page].getPhoneNumber()) == false);
+
 	std::cout << "darkest secret:	";
 	contact[page].setDarkestSecret(get_instream());
 	contact[page].setIndex(page);

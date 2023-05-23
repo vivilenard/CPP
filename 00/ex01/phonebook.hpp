@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:52:58 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/16 17:36:10 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/05/16 18:36:47 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ class	PhoneBook
 };
 
 std::string	get_instream();
+bool		only_letters(std::string s);
+bool		only_digits_plus_extra(std::string s);
 
 # endif

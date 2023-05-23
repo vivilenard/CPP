@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 18:15:38 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/10 18:17:47 by vlenard          ###   ########.fr       */
+/*   Created: 2023/05/16 23:06:11 by vlenard           #+#    #+#             */
+/*   Updated: 2023/05/20 16:21:39 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#ifndef ZOMBIE_HPP
 
-void	print_contact(int i)
+# define ZOMBIE_HPP
+
+#include <iostream>
+
+class Zombie
 {
-	std::cout << contact[i].first_name << std::endl;
-}
+	private:
+		std::string _name;
+		
+	public:
+		void	announce (void);
+		Zombie(std::string _name);
+		~Zombie();
+		
+};
+
+void randomChump( std::string name );
+Zombie* newZombie( std::string name );
+
+# endif

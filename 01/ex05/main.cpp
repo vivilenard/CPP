@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 14:31:13 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/16 17:55:06 by vlenard          ###   ########.fr       */
+/*   Created: 2023/05/19 14:15:35 by vlenard           #+#    #+#             */
+/*   Updated: 2023/05/20 14:27:15 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "Harl.hpp"
 
-int	main(int argc, char **argv)
+int	main ()
 {
-	if (argc == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return 0;
-	}
-	for (int i = 1; i < argc; i++)
-	{
-		std::string s(argv[i]);
-		for (int j = 0; j < s.length(); j++)
-		{
-			s[j] = std::toupper(s[j]);
-			std::cout << s[j];
-		}
-		std::cout << " ";
-	}
+	Harl	harl;
+	
+	harl.complain("debug");
 	std::cout << std::endl;
+	harl.complain("info");
+	std::cout << std::endl;
+	harl.complain("warning");
+	std::cout << std::endl;
+	harl.complain("error");
+	std::cout << std::endl;
+	harl.complain("lol");
+	std::cout << std::endl;
+	harl.complain("bye");
 	return 0;
 }

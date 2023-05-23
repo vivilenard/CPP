@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 14:31:13 by vlenard           #+#    #+#             */
-/*   Updated: 2023/05/16 17:55:06 by vlenard          ###   ########.fr       */
+/*   Created: 2023/05/16 23:05:27 by vlenard           #+#    #+#             */
+/*   Updated: 2023/05/20 16:27:00 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Zombie.hpp"
 
-int	main(int argc, char **argv)
+int	main (int argc, char **argv)
 {
-	if (argc == 1)
+	if (argc != 3)
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		std::cout << "Please enter 2 Parameters: 'Number of Zombies' and 'Name'" << std::endl;
 		return 0;
 	}
-	for (int i = 1; i < argc; i++)
-	{
-		std::string s(argv[i]);
-		for (int j = 0; j < s.length(); j++)
-		{
-			s[j] = std::toupper(s[j]);
-			std::cout << s[j];
-		}
-		std::cout << " ";
-	}
-	std::cout << std::endl;
+		
+	Zombie* zombie = zombieHorde(std::atoi(argv[1]), argv[2]); 
+	
+	for (int i = 0; i < std::atoi(argv[1]); i++)
+		zombie[i].announce();
+
+	if (zombie)
+		delete [] zombie;
 	return 0;
 }
