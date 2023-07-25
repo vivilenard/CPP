@@ -33,6 +33,8 @@ class Bureaucrat
 				const char* what() const throw();
 		};
 
+	Bureaucrat & operator= (Bureaucrat const & rhs);
+
 };
 
 std::ostream & operator<< (std::ostream & o, Bureaucrat const & rhs);

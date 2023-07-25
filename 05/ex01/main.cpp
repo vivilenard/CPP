@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:08:14 by vlenard           #+#    #+#             */
-/*   Updated: 2023/07/25 16:25:51 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/07/25 17:04:52 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	main()
 	{
 		try
 		{
-			Bureaucrat Valerie("Valerie", 900);
-			Form F1("F1", false, 80, 30);
+			Bureaucrat Valerie("Valerie", 30);
+			Form F1("F1", false, 30, 70);
 
 			std::cout << Valerie << std::endl;
 			std::cout << F1 << std::endl;
