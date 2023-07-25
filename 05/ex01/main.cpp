@@ -6,48 +6,45 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:08:14 by vlenard           #+#    #+#             */
-/*   Updated: 2023/07/25 11:55:54 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/07/25 16:25:51 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main()
 {
 	{
-		Bureaucrat	Tim("Tim", 150);
-		Bureaucrat	Helge(Tim);
+		try
+		{
+			Bureaucrat Valerie("Valerie", 900);
+			Form F1("F1", false, 80, 30);
 
-		try{
-			Helge.incrementGrade();
-			Tim.decrementGrade();
-			Helge.incrementGrade();
-		}
-		catch (std::exception &e){
-			std::cout << e.what() << std::endl ;
-		}
-		std::cout << Tim << std::endl;
-		std::cout << Helge << std::endl;
+			std::cout << Valerie << std::endl;
+			std::cout << F1 << std::endl;
 
-		std::cout << std::endl << std::endl;
+			Valerie.signForm(F1);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
-	std::cout << std::endl << "------------------------------------" << std::endl;
+	std::cout << "-------------------------------" << std::endl;
 	{
-		try{
-			Bureaucrat Lisa("Lisa", 1);
-		}
-		catch (std::exception &e){
-			std::cout << e.what() << std::endl;
-		}
-		Bureaucrat	Lisa("Lisa2", 1);
-		try{
-			Lisa.incrementGrade();
-		}
-		catch (std::exception &e){
-			std::cout << e.what() << std::endl;
-		}
+		try
+		{
+			Bureaucrat Valerie("Valerie", 70);
+			Form F1("F1", false, 80, 30);
 
-		std::cout << std::endl << std::endl;
+			std::cout << Valerie << std::endl;
+			std::cout << F1 << std::endl;
+
+			F1.beSigned(Valerie);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
-	return 0;
 }

@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(): _name("unknown"), _grade(100)
 {
@@ -8,6 +8,8 @@ Bureaucrat::Bureaucrat(): _name("unknown"), _grade(100)
 
 Bureaucrat::Bureaucrat( std::string const name, unsigned int grade ): _name(name), _grade(grade)
 {
+	if (PRINT)
+		std::cout << *this << ", constructor called" << std::endl;
 	if (_grade < 1)
 	{
 		_grade = 100;
@@ -18,8 +20,6 @@ Bureaucrat::Bureaucrat( std::string const name, unsigned int grade ): _name(name
 		_grade = 100;
 		throw (Bureaucrat::GradeTooLowException());
 	}
-	if (PRINT)
-		std::cout << *this << ", constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat & cpy ) : _name(cpy._name), _grade(cpy._grade)
@@ -56,6 +56,18 @@ void	Bureaucrat::decrementGrade()
 	}
 }
 
+void	Bureaucrat::signForm ( Form & F )
+{
+	try {
+		F.beSigned(*this);
+		std::cout << MAGENTA << this->_name << " signed form " << F.getName() << RESET << std::endl;
+	}
+	catch ( std::exception & e )
+	{
+		std::cout << MAGENTA << this->_name << " couldn't sign form " << F.getName() << " because the grade is too low" << RESET << std::endl;
+	}
+}
+
 //getters
 
 std::string	const Bureaucrat::getName() const
@@ -83,8 +95,14 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 
 //operator overload
 
-std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs)
+std::ostream & operator<< (std::ostream & o, Bureaucrat const & rhs)
 {
 	std::cout << "Bureaucrat " << rhs.getName() << ", grade " << rhs.getGrade();
 	return (o);
+}
+
+Bureaucrat & Bureaucrat::operator= (Bureaucrat const & rhs)
+{
+	this->_grade = rhs.getGrade();
+	return (*this);
 }

@@ -11,16 +11,16 @@ class Form
 	private:
 		const std::string	_name;
 		bool				_signed;
-		unsigned int		_sign;
-		unsigned int		_exec;
+		unsigned int		_signGrade;
+		unsigned int		_execGrade;
 
 	public:
 		Form();
-		Form(const std::string name, bool _signed, unsigned int _sign, unsigned int _exec);
+		Form(const std::string name, bool signed_bool, unsigned int signGrade, unsigned int execGrade);
 		Form(const Form & cpy);
 		~Form();
 
-		void	beSigned(const Bureaucrat & B);
+		bool	beSigned( const Bureaucrat & B );
 
 		//exception overload
 		class GradeTooHighException : public std::exception {
@@ -38,8 +38,10 @@ class Form
 		bool				getSigned() const;
 		unsigned int		getSign() const;
 		unsigned int		getExec() const;
+
+		Form & operator= (const Form & rhs);
 };
 
-std::ostream & operator<<(std::ostream & o, const Form & rhs);
+std::ostream & operator<< (std::ostream & o, const Form & rhs);
 
 #endif
