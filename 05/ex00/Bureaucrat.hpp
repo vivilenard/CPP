@@ -1,6 +1,8 @@
 # ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+# define PRINT true
+
 #include <iostream>
 
 class Bureaucrat
@@ -18,13 +20,8 @@ class Bureaucrat
 		void	incrementGrade();
 		void	decrementGrade();
 
-		std::string const &	getName();
-		unsigned int		getGrade();
-
-		// class	Exception : public std::exception {
-		// 	public:
-		// 		virtual const char* what() const throw();
-		// }
+		std::string const	getName() const;
+		unsigned int		getGrade() const;
 
 		class	GradeTooHighException : public std::exception {
 			public:
@@ -36,7 +33,8 @@ class Bureaucrat
 				const char* what() const throw();
 		};
 
-		Bureaucrat & operator<< (Bureaucrat const & Bu)
 };
+
+std::ostream & operator<< (std::ostream & o, Bureaucrat const & rhs);
 
 #endif
