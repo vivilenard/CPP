@@ -17,9 +17,9 @@ Form::Form(const std::string name, bool signed_bool, unsigned int signGrade, uns
 		throw(GradeTooLowException());
 }
 
-Form::Form(const Form & cpy)
+Form::Form(const Form & cpy) : _name(cpy.getName()), _signed(cpy.getSigned()),
+	_signGrade(cpy.getSign()), _execGrade(cpy.getExec())
 {
-	*this = cpy;
 	if (PRINT)
 		std::cout << "Form Copy Constructor called" << std::endl;
 }
@@ -77,8 +77,6 @@ std::ostream & operator<< (std::ostream & o, const Form & rhs)
 Form & Form::operator= (const Form & rhs)
 {
 	this->_signed = rhs.getSigned();
-	this->_signGrade = rhs.getSign();
-	this->_execGrade = rhs.getExec();
 
 	if (PRINT)
 		std::cout << "Form Copy Assignment Operator called" << std::endl;

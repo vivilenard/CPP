@@ -1,12 +1,12 @@
-# ifndef FORM_HPP
-# define FORM_HPP
+# ifndef AFORM_HPP
+# define AFORM_HPP
 
 # define PRINT true
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-class Form
+class AForm
 {
 	private:
 		const std::string		_name;
@@ -15,12 +15,12 @@ class Form
 		const unsigned int		_execGrade;
 
 	public:
-		Form();
-		Form( const std::string name, bool signed_bool, unsigned int signGrade, unsigned int execGrade );
-		Form( const Form & cpy );
-		~Form();
+		AForm();
+		AForm( const std::string name, bool signed_bool, unsigned int signGrade, unsigned int execGrade );
+		AForm( const AForm & cpy );
+		~AForm();
 
-		bool	beSigned( const Bureaucrat & B );
+		virtual bool	beSigned( const Bureaucrat & B ) = 0;
 
 		//exception overload
 		class GradeTooHighException : public std::exception {
@@ -39,9 +39,9 @@ class Form
 		unsigned int		getSign() const;
 		unsigned int		getExec() const;
 
-		Form & operator= (const Form & rhs);
+		AForm & operator= (const AForm & rhs);
 };
 
-std::ostream & operator<< (std::ostream & o, const Form & rhs);
+std::ostream & operator<< (std::ostream & o, const AForm & rhs);
 
 #endif
