@@ -60,11 +60,11 @@ void	Bureaucrat::signAForm ( AForm & F )
 {
 	try {
 		F.beSigned(*this);
-		std::cout << MAGENTA << this->_name << " signed Aform " << F.getName() << RESET << std::endl;
+		std::cout << GREEN << this->_name << " signed Form " << F.getName() << RESET << std::endl;
 	}
 	catch ( std::exception & e )
 	{
-		std::cout << MAGENTA << this->_name << " couldn't sign Aform " << F.getName() << " because the grade is too low" << RESET << std::endl;
+		std::cout << MAGENTA << this->_name << " couldn't sign Form " << F.getName() << " because the grade is too low" << RESET << std::endl;
 	}
 }
 

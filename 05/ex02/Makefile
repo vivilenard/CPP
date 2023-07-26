@@ -6,7 +6,7 @@
 #    By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 14:21:29 by vlenard           #+#    #+#              #
-#    Updated: 2023/07/26 12:24:25 by vlenard          ###   ########.fr        #
+#    Updated: 2023/07/26 14:16:09 by vlenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

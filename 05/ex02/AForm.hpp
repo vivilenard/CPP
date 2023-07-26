@@ -18,9 +18,10 @@ class AForm
 		AForm();
 		AForm( const std::string name, bool signed_bool, unsigned int signGrade, unsigned int execGrade );
 		AForm( const AForm & cpy );
-		~AForm();
+		virtual ~AForm();
 
-		virtual bool	beSigned( const Bureaucrat & B ) = 0;
+		bool					beSigned( const Bureaucrat & B );
+		virtual void			execute( Bureaucrat const & executor ) const = 0;
 
 		//exception overload
 		class GradeTooHighException : public std::exception {
@@ -33,6 +34,11 @@ class AForm
 				const char *what() const throw();
 		};
 
+		class FormNotSignedException : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		
 		//getters
 		const std::string	getName() const;
 		bool				getSigned() const;

@@ -6,6 +6,8 @@
 # define BLUE "\033[4;34m"
 # define MAGENTA "\033[1;35m"
 # define CYAN "\033[1;36m"
+# define GREEN "\033[0;32m"
+# define RED "\033[1;31m"
 # define RESET "\033[1;0m"
 
 #include <iostream>

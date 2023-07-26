@@ -59,6 +59,10 @@ const char	*AForm::GradeTooLowException::what() const throw()
 	return ("Grade is too low");
 }
 
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return ("Form is not signed");
+}
 //getters
 const std::string	AForm::getName() const { return _name; }
 bool				AForm::getSigned() const { return _signed; }
@@ -68,7 +72,7 @@ unsigned int		AForm::getExec() const { return _execGrade; }
 //operators
 std::ostream & operator<< (std::ostream & o, const AForm & rhs)
 {
-	std::cout << CYAN << "\tAForm " << rhs.getName() << std::endl;
+	std::cout << CYAN << "\tForm " << rhs.getName() << std::endl;
 	std::cout << "\tSigned: " << rhs.getSigned() << std::endl;
 	std::cout << "\tSign Grade: " << rhs.getSign() << std::endl;
 	std::cout << "\tExecute Grade: " << rhs.getExec() << RESET;
@@ -82,3 +86,4 @@ AForm & AForm::operator= (const AForm & rhs)
 		std::cout << "AForm Copy Assignment Operator called" << std::endl;
 	return (*this);
 }
+
