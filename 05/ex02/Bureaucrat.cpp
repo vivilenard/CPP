@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(): _name("unknown"), _grade(100)
 {
@@ -56,11 +57,11 @@ void	Bureaucrat::decrementGrade()
 	}
 }
 
-void	Bureaucrat::signAForm ( AForm & F )
+void	Bureaucrat::signForm ( AForm & F )
 {
 	try {
 		F.beSigned(*this);
-		std::cout << GREEN << this->_name << " signed Form " << F.getName() << RESET << std::endl;
+		std::cout << GREEN << "\t" << this->_name << " signed Form " << F.getName() << RESET << std::endl;
 	}
 	catch ( std::exception & e )
 	{
@@ -68,7 +69,23 @@ void	Bureaucrat::signAForm ( AForm & F )
 	}
 }
 
-//getters
+void Bureaucrat::executeForm( AForm const & F )
+{
+	if (F.getSigned() == false)
+	{
+		std::cout << MAGENTA << getName() << " can not execute Form because it is not signed :(" << RESET << std::endl;
+		return ;
+	}
+	else if (getGrade() > F.getExec())
+	{
+		std::cout << MAGENTA << getName() << " can not execute Form because his Grade is too low :(" << RESET << std::endl;
+		return ;
+	}
+	else
+		F.execute(*this);
+}
+
+// getters
 
 std::string	const Bureaucrat::getName() const
 {

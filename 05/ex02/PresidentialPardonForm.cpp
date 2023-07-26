@@ -33,7 +33,7 @@ void PresidentialPardonForm::execute( Bureaucrat const & executor ) const
 		return ;
 	}
 	if (executor.getGrade() <= this->getExec())
-		std::cout << GREEN << _target << " has been pardoned by Zaphod Beeblebrox" << RESET << std::endl;
+		std::cout << YELLOW << "\t" << _target << " has been pardoned by Zaphod Beeblebrox !" << RESET << std::endl;
 	else
 	{
 		std::cout << MAGENTA << "Executing of " << this->getName()

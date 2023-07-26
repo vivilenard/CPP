@@ -36,13 +36,13 @@ bool	AForm::beSigned( const Bureaucrat & B )
 	{
 		this->_signed = true;
 		if (PRINT)
-			std::cout << BLUE << "\t" <<this->getName() << " got signed" << RESET <<std::endl;
+			std::cout << BLUE << "\t" << this->getName() << " got signed" << RESET <<std::endl;
 		return (true);
 	}
 	else
 	{
 		if (PRINT)
-			std::cout << BLUE << "\t" <<this->getName() << " didn't get signed" << RESET <<std::endl;
+			std::cout << BLUE << this->getName() << " didn't get signed" << RESET <<std::endl;
 		throw (GradeTooLowException());
 	}
 	return (false);
