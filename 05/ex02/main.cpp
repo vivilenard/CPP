@@ -6,11 +6,10 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:08:14 by vlenard           #+#    #+#             */
-/*   Updated: 2023/07/27 12:57:33 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/07/27 13:15:16 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -69,23 +68,3 @@ int	main()
 	
 	return 0;
 }
-
-
-
-	
-	// try
-	// {
-	// 	Bureaucrat Gustavo("Gustavo", 8);
-	// 	Bureaucrat Maria("Maria", 2);
-	// 	PresidentialPardonForm lala("Lala");
-
-	// 	std::cout << std::endl;
-
-	// 	lala.beSigned(Gustavo);
-	// 	Maria.executeForm(lala);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cout << std::endl << std::endl;
-	// 	std::cerr << RED << e.what() << RESET << '\n';
-	// }
