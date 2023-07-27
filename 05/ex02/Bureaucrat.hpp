@@ -12,6 +12,7 @@
 # define RESET "\033[1;0m"
 
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 
 class AForm;
