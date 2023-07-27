@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:08:14 by vlenard           #+#    #+#             */
-/*   Updated: 2023/07/27 12:38:14 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/07/27 12:57:33 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main()
 		std::cout << std::endl;
 
 		Robot.beSigned(Gustavo);
-		Robot.execute(Gustavo);
+		Gustavo.executeForm(Robot);
 	}
 	catch (std::exception & e)
 	{

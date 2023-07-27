@@ -7,7 +7,7 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm()
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const std::string target )
-	: AForm("RobotomyRequestForm", false, 25, 5), _target(target)
+	: AForm("RobotomyRequestForm", false, 72, 45), _target(target)
 {
 	if (PRINT)
 		std::cout << "RobotomyRequestForm Constructor called" << std::endl;
