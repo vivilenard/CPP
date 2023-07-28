@@ -30,7 +30,6 @@ void ShrubberyCreationForm::execute( Bureaucrat const & executor ) const
 	{
 		std::cout << MAGENTA << "Executing of " << this->getName() << " not possible. It hasn't been signed" << RESET << std::endl;
 		throw(FormNotSignedException());
-		//return ;
 	}
 	if (executor.getGrade() > this->getExec())
 	{
@@ -38,7 +37,8 @@ void ShrubberyCreationForm::execute( Bureaucrat const & executor ) const
 			<< " not possible. The Grade of " << executor.getName() << " is too low" << RESET << std::endl;
 		throw(GradeTooLowException());
 	}
-	std::ofstream outfile (_target + "_shrubbery");
+	std::string filename = _target + "_shrubbery";
+	std::ofstream outfile(filename.c_str());
 	outfile << "		/ \\"		<< std::endl;
 	outfile << "	   /   \\"		<< std::endl;
 	outfile << "	  /     \\"		<< std::endl;

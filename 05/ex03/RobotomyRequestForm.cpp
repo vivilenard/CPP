@@ -33,7 +33,6 @@ void RobotomyRequestForm::execute( Bureaucrat const & executor ) const
 		std::cout << MAGENTA << "Executing of " << this->getName() << " not possible. It hasn't been signed" << RESET << std::endl;
 		std::cout << MAGENTA << "The Robotomy has failed" << RESET << std::endl;
 		throw(FormNotSignedException());
-		//return ;
 	}
 	if (executor.getGrade() > this->getExec())
 	{
@@ -42,7 +41,8 @@ void RobotomyRequestForm::execute( Bureaucrat const & executor ) const
 		std::cout << MAGENTA << "The Robotomy has failed" << RESET << std::endl;
 		throw(GradeTooLowException());
 	}
-	system("say brrrr");
+	if (system("say brummbbbbbrrbrbrbrbrbrbrbr") != 0)
+		std::cout << MAGENTA << "brummbbbbbrrbrbrbrbrbrbrbr" << RESET << std::endl;
 	std::cout << YELLOW << "Target has been robotomized successfully 50% of the time." << RESET << std::endl;
 }
 
