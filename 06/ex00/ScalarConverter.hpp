@@ -14,7 +14,12 @@ class ScalarConverter
 		~ScalarConverter();
 	
 		ScalarConverter operator=(const ScalarConverter & rhs);
-
+		//static int		figure_out_type(const std::string s);
+		static bool		string_to_char(const std::string s);
+		static bool		string_to_int(const std::string s);
+		static bool		string_to_float(const std::string s);
+		static bool		string_to_double(const std::string s);
+	
 	public:
 		static void	convert(const std::string s);
 };
