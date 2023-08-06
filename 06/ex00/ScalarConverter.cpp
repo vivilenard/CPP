@@ -26,9 +26,9 @@ ScalarConverter ScalarConverter::operator=(const ScalarConverter & rhs)
 
 bool	ScalarConverter::string_to_char(const std::string s)
 {
-	if (s.length() == 1 && s[0] > 31 && s[0] < 128 && !isdigit(s[0]))
-		return true;
-	return false;
+	if (!(s.length() == 1 && s[0] > 31 && s[0] < 128 && !isdigit(s[0])))
+		return false;
+	return true;
 }
 
 bool 	ScalarConverter::string_to_int(const std::string s)
@@ -42,20 +42,34 @@ bool 	ScalarConverter::string_to_int(const std::string s)
 
 bool 	ScalarConverter::string_to_float(const std::string s)
 {
-	float	f;
-	return f;
+	int		n = 0;
+	int		p = 0;
+
+	if (!isdigit(s[0])) return false;
+	while (s[n] == '-' || s[n] == '+')
+		n++;
+	for (n; n++; s[n])
+	{
+		if (!isdigit(s[n]) && s[n] != '.')
+			return false;
+		if (s[n] == '.')
+			p++;
+	}
+	if (!isdigit(s[n - 1]) && s[n] != 'f') return false;
+	if (n > 6 && n < 18)
+		return false; //isdouble
+	//stof
+	float	f = std::stof(s);
+	return true;
 }
 
 bool	ScalarConverter::string_to_double(const std::string s)
 {
 	double	d;
+
+	//stod
 	return d;
 }
-
-// int		ScalarConverter::figure_out_type(const std::string s)
-// {
-// }
-
 
 void	ScalarConverter::convert(std::string s)
 {
