@@ -14,10 +14,10 @@
 
 int	main(int argc, char **argv)
 {
+	ScalarConverter con();
 	if (argc != 2)
 		return (0);
 	std::string s(argv[1]);
-	
 	return (0);
 }
 //char, int, float, double

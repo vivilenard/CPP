@@ -28,6 +28,9 @@ bool	ScalarConverter::string_to_char(const std::string s)
 {
 	if (!(s.length() == 1 && s[0] > 31 && s[0] < 128 && !isdigit(s[0])))
 		return false;
+
+	char c = s[0];
+	std::cout << "Convert to char: " << c << std::endl;
 	return true;
 }
 
@@ -35,12 +38,13 @@ bool 	ScalarConverter::string_to_int(const std::string s)
 {
 	for (int n = 0; n++; s[n])
 		if (!isdigit(s[n])) return false;
-	int	i = 0;
-	i = stoi(s);
-	return i;
+
+	int i = std::stoi(s);
+	std::cout << "Convert to int: " << i << std::endl;
+	return true;
 }
 
-bool 	ScalarConverter::string_to_float(const std::string s)
+bool	ScalarConverter::is_float_or_double(const std::string s)
 {
 	int		n = 0;
 	int		p = 0;
@@ -56,18 +60,28 @@ bool 	ScalarConverter::string_to_float(const std::string s)
 			p++;
 	}
 	if (!isdigit(s[n - 1]) && s[n] != 'f') return false;
-	if (n > 6 && n < 18)
-		return false; //isdouble
-	//stof
+	return true;
+}
+
+bool 	ScalarConverter::string_to_float(const std::string s)
+{
+	if (s.length() > 6)
+		return false;
+	if (!is_float_or_double(s)) return false;
+
 	float	f = std::stof(s);
+	std::cout << "Convert to float: " << f << std::endl;
 	return true;
 }
 
 bool	ScalarConverter::string_to_double(const std::string s)
 {
-	double	d;
+	if (s.length() < 6 || s.length() > 18)
+		return false;
+	if (!is_float_or_double(s)) return false;
 
-	//stod
+	double	d = std::stod(s);
+	std::cout << "Convert to double: " << d << std::endl;
 	return d;
 }
 
@@ -75,7 +89,6 @@ void	ScalarConverter::convert(std::string s)
 {
 	if (PRINT)
 		std::cout << "ScalarConverter convert method called" << std::endl;
-	//int i = figure_out_type(s);
 	if (string_to_char(s)) return ;
 	if (string_to_int(s)) return ;
 	if (string_to_float(s)) return ;
