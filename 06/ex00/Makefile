@@ -6,7 +6,7 @@
 #    By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 14:21:29 by vlenard           #+#    #+#              #
-#    Updated: 2023/08/05 16:30:04 by vlenard          ###   ########.fr        #
+#    Updated: 2023/09/20 12:01:56 by vlenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = main.cpp ScalarConverter.hpp ScalarConverter.cpp
+SRC = main.cpp ScalarConverter.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
