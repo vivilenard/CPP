@@ -11,10 +11,10 @@ class ScalarConverter
 	private:
 		ScalarConverter operator=(const ScalarConverter & rhs);
 		static int		detect_type(const std::string s);
-		static bool		string_to_char(const std::string s);
-		static bool		string_to_int(const std::string s);
-		static bool		string_to_float(const std::string s);
-		static bool		string_to_double(const std::string s);
+		static bool		convert_char(const std::string s);
+		static bool		convert_int(const std::string s);
+		static bool		convert_float(const std::string s);
+		static bool		convert_double(const std::string s);
 		static bool		is_float_or_double(const std::string s);
 		static bool		is_char(const std::string s);
 		static bool		is_int(const std::string s);

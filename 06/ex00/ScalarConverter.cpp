@@ -2,25 +2,19 @@
 
 void ScalarConverter::convert(const std::string s)
 {
-	//enum TYPE{CHAR = 1, INT = 2, FLOAT = 3, DOUBLE = 4};
-	int type = detect_type(s);
+	int	type = detect_type(s);
 	switch (type)
 	{
-		case CHAR:
-			string_to_char(s);
-			break;
-		case INT:
-			string_to_int(s);
-			break;
-		case FLOAT:
-			string_to_float(s);
-			break;
-		case DOUBLE:
-			string_to_double(s);
-			break;
-		default:
-			break;
+		case (CHAR):
+			convert_char(s);
+		case (INT):
+			convert_int(s);
+		case (FLOAT):
+			convert_float(s);
+		case (DOUBLE):
+			convert_double(s);
 	}
+
 }
 
 int	ScalarConverter::detect_type(const std::string s)
@@ -38,7 +32,9 @@ int	ScalarConverter::detect_type(const std::string s)
 
 bool		ScalarConverter::is_char(const std::string s)
 {
-	if (s.length() == 1 && isalpha(s[0]))
+	if (s.length() != 1)
+		return false;
+	if (!isdigit(s[0]))
 		return true;
 	return false;
 }
@@ -56,6 +52,7 @@ bool		ScalarConverter::is_float(const std::string s)
 		return false;
 	return true;
 }
+
 bool		ScalarConverter::is_double(const std::string s)
 {
 	if (s.length() < 6 || s.length() > 18)
@@ -84,34 +81,38 @@ bool	ScalarConverter::is_float_or_double(const std::string s)
 }
 
 
-bool	ScalarConverter::string_to_char(const std::string s)
+bool	ScalarConverter::convert_char(const std::string s)
 {
-	std::cout << "Convert to char: " << std::endl;
+	std::cout << "char: " << std::endl;
 	char c = s[0];
 	std::cout << c << std::endl;
 	return true;
 }
 
-bool 	ScalarConverter::string_to_int(const std::string s)
+bool 	ScalarConverter::convert_int(const std::string s)
 {
-	std::cout << "Convert to int: ";
 	int i = std::stoi(s);
+	std::cout << "char: ";
+	if (isprint(i))
+		std::cout << static_cast<char>(i) << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+	std::cout << "int: ";
 	std::cout << i << std::endl;
 	return true;
 }
 
-bool 	ScalarConverter::string_to_float(const std::string s)
+bool 	ScalarConverter::convert_float(const std::string s)
 {
-	std::cout << "Convert to float: ";
 	float	f = std::stof(s);
-	std::cout << f << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
 	return true;
 }
 
-bool	ScalarConverter::string_to_double(const std::string s)
+bool	ScalarConverter::convert_double(const std::string s)
 {
 	double	d = std::stod(s);
-	std::cout << "Convert to double: " << d << std::endl;
+	std::cout << "double: " << d << "f" << std::endl;
 	return d;
 }
 
