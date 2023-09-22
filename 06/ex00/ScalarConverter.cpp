@@ -7,17 +7,20 @@ void ScalarConverter::convert(const std::string s)
 	switch (type)
 	{
 		case (CHAR):
-			//printf("char\n");
 			convert_char(s);
 			break ;
 		case (INT):
-			//printf("int\n");
 			convert_int(s);
-			// break ;
 		case (FLOAT):
-			convert_float(s); //printf("float\n");
+			convert_float(s);
 		case (DOUBLE):
-			convert_double(s); //printf("double\n");
+			convert_double(s);
+			break ;
+		case (INF):
+			convert_inf(s);
+			break ;
+		default:
+			std::cout << "String type unknown" << std::endl;
 	}
 
 }
@@ -32,7 +35,9 @@ int	ScalarConverter::detect_type(const std::string s)
 		return (FLOAT);
 	if (is_double(s))
 		return (DOUBLE);
-	return 0;
+	if (is_inf(s))
+		return (INF);
+	return UNKNOWN;
 }
 
 bool		ScalarConverter::is_char(const std::string s)
@@ -64,6 +69,13 @@ bool		ScalarConverter::is_double(const std::string s)
 		return false;
 	if (!is_float_or_double(s)) return false;
 	return true;
+}
+
+bool		ScalarConverter::is_inf(std::string s)
+{
+	if (s == "nan" || s == "inf" || s == "-inf")
+		return true;
+	return false;
 }
 
 bool	ScalarConverter::is_float_or_double(const std::string s)
@@ -149,8 +161,6 @@ bool	ScalarConverter::convert_double(std::string s)
 	const unsigned long n = s.find('f');
 	if (n != std::string::npos)
 		s.erase(n);
-	if (is_double(s))
-		convert_float(s);
 
 	std::stringstream ss(s);
 	ss >> d;
@@ -163,6 +173,15 @@ bool	ScalarConverter::convert_double(std::string s)
 	else
 		std::cout << "Non displayable" << std::endl;
 	return d;
+}
+
+bool		ScalarConverter::convert_inf(const std::string s)
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << s << "f" << std::endl;
+	std::cout << "double: " << s << std::endl;
+	return true;
 }
 
 ScalarConverter::ScalarConverter()
