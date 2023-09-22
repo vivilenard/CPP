@@ -3,22 +3,27 @@
 void ScalarConverter::convert(const std::string s)
 {
 	int	type = detect_type(s);
+	std::cout << type << std::endl;
 	switch (type)
 	{
 		case (CHAR):
+			//printf("char\n");
 			convert_char(s);
+			break ;
 		case (INT):
+			//printf("int\n");
 			convert_int(s);
+			// break ;
 		case (FLOAT):
-			convert_float(s);
+			convert_float(s); //printf("float\n");
 		case (DOUBLE):
-			convert_double(s);
+			convert_double(s); //printf("double\n");
 	}
 
 }
 
 int	ScalarConverter::detect_type(const std::string s)
-{
+{ //-inf, +inf, nan
 	if (is_char(s))
 		return (CHAR);
 	if (is_int(s))
@@ -83,36 +88,80 @@ bool	ScalarConverter::is_float_or_double(const std::string s)
 
 bool	ScalarConverter::convert_char(const std::string s)
 {
-	std::cout << "char: " << std::endl;
+	std::cout << "char: ";
 	char c = s[0];
-	std::cout << c << std::endl;
+	std::cout << "'" << c << "'" << std::endl;
+	if (!is_char(s))
+		return true;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
 	return true;
 }
 
 bool 	ScalarConverter::convert_int(const std::string s)
 {
-	int i = std::stoi(s);
-	std::cout << "char: ";
-	if (isprint(i))
-		std::cout << static_cast<char>(i) << std::endl;
+	std::stringstream ss(s);
+	int i;
+
+	ss >> i;
+	if (!is_char(s))
+	{
+		std::cout << "char: ";
+		if (isprint(i))
+			std::cout << static_cast<char>(i) << std::endl;
+		else
+			std::cout << "Non displayable" << std::endl;
+	}
+	std::cout << "int: ";
+	if (!ss.fail())
+		std::cout << i << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
-	std::cout << "int: ";
-	std::cout << i << std::endl;
 	return true;
 }
 
-bool 	ScalarConverter::convert_float(const std::string s)
+bool 	ScalarConverter::convert_float(std::string s)
 {
-	float	f = std::stof(s);
-	std::cout << "float: " << f << "f" << std::endl;
+	float	f;
+	if (!is_int(s))
+		convert_int(s);
+	const unsigned long n = s.find('f');
+	if (n != std::string::npos)
+		s.erase(n);
+
+	std::stringstream ss(s);
+	ss >> f;
+	std::cout << "float: ";
+	if (!ss.fail())
+	{
+		std::cout << std::fixed << std::setprecision(1) << f;
+		std::cout << "f" << std::endl;
+	}
+	else
+		std::cout << "Non displayable" << std::endl;
 	return true;
 }
 
-bool	ScalarConverter::convert_double(const std::string s)
+bool	ScalarConverter::convert_double(std::string s)
 {
-	double	d = std::stod(s);
-	std::cout << "double: " << d << "f" << std::endl;
+	double d;
+	const unsigned long n = s.find('f');
+	if (n != std::string::npos)
+		s.erase(n);
+	if (is_double(s))
+		convert_float(s);
+
+	std::stringstream ss(s);
+	ss >> d;
+	std::cout << "double: ";
+	if (!ss.fail())
+	{
+		std::cout << std::fixed << std::setprecision(1) << d;
+		std::cout << std::endl;
+	}
+	else
+		std::cout << "Non displayable" << std::endl;
 	return d;
 }
 

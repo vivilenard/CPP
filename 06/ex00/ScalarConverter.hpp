@@ -4,7 +4,9 @@
 # define PRINT true
 
 #include <iostream>
-#include <string.h>
+#include <string>
+#include <sstream>
+#include <iomanip>
 
 class ScalarConverter
 {
