@@ -23,7 +23,8 @@ Base *generate(void)
 			std::cout << "generate B" << std::endl; return new B;
 		case 2:
 			std::cout << "generate C" << std::endl; return new C;
-
+		default:
+			std::cout << "generate A" << std::endl; return new A;
 	}
 	return NULL;
 }
@@ -54,6 +55,11 @@ void identify (Base &ptr)
 void identify (Base *ptr)
 {
 	std::cout << "Taking pointer\n";
+	if (!ptr)
+	{
+		std::cout << "There is nothing to be identified" << std::endl;
+		return ;
+	}
 	A *downcast_a = dynamic_cast<A*>(ptr);
 	if (downcast_a)
 		std::cout << "identified as A class" << std::endl;
