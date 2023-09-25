@@ -3,7 +3,7 @@
 void ScalarConverter::convert(const std::string s)
 {
 	int	type = detect_type(s);
-	std::cout << type << std::endl;
+	// std::cout << type << std::endl;
 	switch (type)
 	{
 		case (CHAR):
@@ -11,8 +11,10 @@ void ScalarConverter::convert(const std::string s)
 			break ;
 		case (INT):
 			convert_int(s);
+			break ;
 		case (FLOAT):
 			convert_float(s);
+			break ;
 		case (DOUBLE):
 			convert_double(s);
 			break ;
@@ -26,7 +28,7 @@ void ScalarConverter::convert(const std::string s)
 }
 
 int	ScalarConverter::detect_type(const std::string s)
-{ //-inf, +inf, nan
+{
 	if (is_char(s))
 		return (CHAR);
 	if (is_int(s))
@@ -37,7 +39,7 @@ int	ScalarConverter::detect_type(const std::string s)
 		return (DOUBLE);
 	if (is_inf(s))
 		return (INF);
-	return UNKNOWN;
+	return (UNKNOWN);
 }
 
 bool		ScalarConverter::is_char(const std::string s)
@@ -50,53 +52,59 @@ bool		ScalarConverter::is_char(const std::string s)
 }
 bool		ScalarConverter::is_int(const std::string s)
 {
-	for (int n = 0; s[n]; n++)
+	unsigned int c = 0;
+	while (s[c] == '-' || s[c] == '+')
+		c++;
+	for (unsigned int n = c; s[n]; n++)
 		if (!isdigit(s[n])) return false;
 	return true;
 }
 bool		ScalarConverter::is_float(const std::string s)
 {
-	if (s.length() > 6)
-		return false;
-	if (!is_float_or_double(s))
-		return false;
-	return true;
-}
+	unsigned int		c = 0;
+	unsigned int		p = 0;
 
-bool		ScalarConverter::is_double(const std::string s)
-{
-	if (s.length() < 6 || s.length() > 18)
-		return false;
-	if (!is_float_or_double(s)) return false;
-	return true;
-}
-
-bool		ScalarConverter::is_inf(std::string s)
-{
-	if (s == "nan" || s == "inf" || s == "-inf")
+	while (s[c] == '-' || s[c] == '+')
+		c++;
+	if (!isdigit(s[c])) return false;
+	for (unsigned int n = c; s[n]; n++)
+	{
+		if (!isdigit(s[n]) && s[n] != '.' && s[n] != 'f')
+			return false;
+		if (s[n] == '.')
+			p++;
+	}
+	if (s.at(s.length() - 1) == 'f' && p <= 1)
 		return true;
 	return false;
 }
 
-bool	ScalarConverter::is_float_or_double(const std::string s)
+bool		ScalarConverter::is_double(const std::string s)
 {
-	int		n = 0;
-	int		p = 0;
+	unsigned int		c = 0;
+	unsigned int		p = 0;
 
 	if (!isdigit(s[0])) return false;
-	while (s[n] == '-' || s[n] == '+')
-		n++;
-	for (n = 0; n++; s[n])
+	while (s[c] == '-' || s[c] == '+')
+		c++;
+	for (unsigned int n = c; s[n]; n++)
 	{
 		if (!isdigit(s[n]) && s[n] != '.')
 			return false;
 		if (s[n] == '.')
 			p++;
 	}
-	if (!isdigit(s[n - 1]) && s[n] != 'f') return false;
-	return true;
+	if (p == 1)
+		return true;
+	return false;
 }
 
+bool		ScalarConverter::is_inf(std::string s)
+{
+	if (s == "nan" || s == "inff" || s == "-inff")
+		return true;
+	return false;
+}
 
 bool	ScalarConverter::convert_char(const std::string s)
 {
@@ -130,18 +138,27 @@ bool 	ScalarConverter::convert_int(const std::string s)
 		std::cout << i << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
+
+	if (is_int(s))
+	{
+		std::cout << "float: " << static_cast<float>(i) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(i) << std::endl;
+	}
 	return true;
 }
 
 bool 	ScalarConverter::convert_float(std::string s)
 {
 	float	f;
+	bool	erase = false;
 	if (!is_int(s))
 		convert_int(s);
 	const unsigned long n = s.find('f');
 	if (n != std::string::npos)
+	{
 		s.erase(n);
-
+		erase = true;
+	}
 	std::stringstream ss(s);
 	ss >> f;
 	std::cout << "float: ";
@@ -152,12 +169,16 @@ bool 	ScalarConverter::convert_float(std::string s)
 	}
 	else
 		std::cout << "Non displayable" << std::endl;
+	if (erase == true)
+		std::cout << "double: " << static_cast<double>(f) << std::endl;
 	return true;
 }
 
 bool	ScalarConverter::convert_double(std::string s)
 {
 	double d;
+	if (is_double(s))
+		convert_float(s);
 	const unsigned long n = s.find('f');
 	if (n != std::string::npos)
 		s.erase(n);
@@ -172,7 +193,7 @@ bool	ScalarConverter::convert_double(std::string s)
 	}
 	else
 		std::cout << "Non displayable" << std::endl;
-	return d;
+	return true;
 }
 
 bool		ScalarConverter::convert_inf(const std::string s)
