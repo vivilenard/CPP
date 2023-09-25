@@ -6,20 +6,21 @@
 
 struct Data
 {
-    int i;
+	int i;
 };
 
 class Serialize
 {
-    public:
-        uintptr_t   serialize(Data* ptr);
-        Data*       deserialize(uintptr_t raw);
+	private:
+		Serialize();
+		Serialize(const Serialize & cpy);
+		~Serialize();
+	public:
+		static uintptr_t   serialize(Data* ptr);
+		static Data*       deserialize(uintptr_t raw);
 
-        Serialize();
-        Serialize(const Serialize & cpy);
-        ~Serialize();
+		Serialize & operator=(const Serialize & rhs);
 
-        Serialize & operator=(const Serialize & rhs);
 };
 
 #endif
