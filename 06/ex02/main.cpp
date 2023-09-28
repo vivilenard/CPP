@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/28 14:53:05 by vlenard           #+#    #+#             */
+/*   Updated: 2023/09/28 14:53:06 by vlenard          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Identify.hpp"
 
 int main()
 {
 	Base *rand_class;
-	
+
 	rand_class = generate();
 	identify(*rand_class);
 	identify(rand_class);

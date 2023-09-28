@@ -23,8 +23,8 @@ class ScalarConverter
 		static bool		is_double(const std::string s);
 		static bool		is_inf(std::string s);
 		ScalarConverter	operator=(const ScalarConverter & rhs);
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter & cpy);
+		ScalarConverter	();
+		ScalarConverter	(const ScalarConverter & cpy);
 		~ScalarConverter();
 
 	public:

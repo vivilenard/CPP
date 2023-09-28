@@ -3,7 +3,6 @@
 void ScalarConverter::convert(const std::string s)
 {
 	int	type = detect_type(s);
-	// std::cout << type << std::endl;
 	switch (type)
 	{
 		case (CHAR):
@@ -129,7 +128,7 @@ bool 	ScalarConverter::convert_int(const std::string s)
 	{
 		std::cout << "char: ";
 		if (isprint(i))
-			std::cout << static_cast<char>(i) << std::endl;
+			std::cout << (char)i << std::endl;
 		else
 			std::cout << "Non displayable" << std::endl;
 	}

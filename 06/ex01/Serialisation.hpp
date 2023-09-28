@@ -16,8 +16,8 @@ class Serialize
 		Serialize(const Serialize & cpy);
 		~Serialize();
 	public:
-		static uintptr_t   serialize(Data* ptr);
-		static Data*       deserialize(uintptr_t raw);
+		static uintptr_t	serialize(Data* ptr);
+		static Data*		deserialize(uintptr_t raw);
 
 		Serialize & operator=(const Serialize & rhs);
 
