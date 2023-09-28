@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:08:14 by vlenard           #+#    #+#             */
-/*   Updated: 2023/07/26 12:20:04 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/09/28 12:29:35 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 int	main()
 {
 	{
-		Bureaucrat	Tim("Tim", 150);
-		Bureaucrat	Helge(Tim);
 
 		try{
+			Bureaucrat	Tim("Tim", 149);
+			Bureaucrat	Helge(Tim);
 			Helge.incrementGrade();
 			Tim.decrementGrade();
 			Helge.incrementGrade();
+			std::cout << Tim << std::endl;
+			std::cout << Helge << std::endl;
+
+			std::cout << std::endl << std::endl;
 		}
 		catch (std::exception &e){
 			std::cout << e.what() << std::endl ;
 		}
-		std::cout << Tim << std::endl;
-		std::cout << Helge << std::endl;
-
-		std::cout << std::endl << std::endl;
 	}
 	std::cout << std::endl << "------------------------------------" << std::endl;
 	{
