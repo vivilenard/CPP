@@ -3,15 +3,11 @@
 
 #include <iostream>
 
-void    iter(std::string & array, size_t length, int f(int))
+template <typename func>
+void	iter(std::string & array, size_t length, func f)
 {
-    for (size_t i = 0; i < length; i++)
-    {
-        std::cout << array[i] << std::endl;
-        f(array.at(i));
-        std::toupper(array[i]);
-        std::cout << array[i] << std::endl;
-    }
+	f(array, length);
 }
+
 
 #endif
