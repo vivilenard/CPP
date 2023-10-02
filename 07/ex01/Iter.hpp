@@ -10,7 +10,7 @@ void	print_out(T obj)
 }
 
 template <typename T>
-void	iter(T *array, size_t length, void f (T))
+void	iter(T *array, size_t length, void f(T))
 {
 	if (!array)
 		return ;
