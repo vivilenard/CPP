@@ -6,13 +6,16 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:59:29 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/02 16:59:48 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/03 12:07:09 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#include "Array.cpp"
 
 int main()
 {
+	Array<int> a(5);
+	std::cout << a.getLength() << std::endl;
+	
 	return 0;
 }

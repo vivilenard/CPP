@@ -3,11 +3,11 @@
 
 #include <iostream>
 
-template <class T>
+template <typename T>
 class Array
 {
 	private:
-		T _array[];
+		T *_array;
 		unsigned int _length;
 	public:
 		Array();
@@ -17,6 +17,9 @@ class Array
 
 		const Array & operator=(const Array & rhs);
 
-}
+		const T & getArray();
+		unsigned int getLength() { return _length; };
+
+};
 
 #endif

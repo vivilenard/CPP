@@ -1,21 +1,28 @@
 #include "Array.hpp"
 
-template <class T>
-Array<T>::Array()
+template <typename T>
+Array<T>::Array(): _length(0)
 {
 }
 
-template <class T>
+template <typename T>
 Array<T>::Array(unsigned int n): _length(n)
 {
-	new T[n];
+	T * a = new T[n];
+	_array = a;
 }
 
 template <class T>
 Array<T>::Array(const Array & cpy)
 {
-	new T;
-	T = cpy;
+	_array = cpy;
+}
+
+template <class T>
+Array<T>::~Array()
+{
+	//delete _array[_length];
+	//delete *this;
 }
 
 template <class T>
@@ -28,4 +35,4 @@ const Array<T> & Array<T>::operator=(const Array & rhs)
 }
 
 template <class T>
-Array<T>::~Array(){}
+const T & Array<T>::getArray(){ return _array; }

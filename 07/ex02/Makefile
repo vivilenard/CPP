@@ -6,7 +6,7 @@
 #    By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 14:21:29 by vlenard           #+#    #+#              #
-#    Updated: 2023/10/02 16:52:58 by vlenard          ###   ########.fr        #
+#    Updated: 2023/10/03 11:57:42 by vlenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = main.cpp
+SRC = main.cpp Array.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
