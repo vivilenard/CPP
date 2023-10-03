@@ -44,3 +44,15 @@ const Array<T> & Array<T>::operator=(const Array & rhs)
 		this->_array[i] = rhs._array[i];
 	return *this;
 }
+
+// template <typename T>
+// const size_t & Array<T>::operator=(const size_t & rhs)
+// {
+	
+// }
+
+template <typename T>
+T & Array<T>::operator[](const size_t rhs)
+{
+	return this->_array[rhs];
+}
