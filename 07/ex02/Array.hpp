@@ -15,9 +15,10 @@ class Array
 		Array(const Array & cpy);
 		~Array();
 
+		unsigned int size();
 		const Array & operator=(const Array & rhs);
 
-		const T & getArray();
+		const T & getArray() { return _array; };
 		unsigned int getLength() { return _length; };
 
 };

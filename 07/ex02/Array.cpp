@@ -12,27 +12,35 @@ Array<T>::Array(unsigned int n): _length(n)
 	_array = a;
 }
 
-template <class T>
+template <typename T>
 Array<T>::Array(const Array & cpy)
 {
-	_array = cpy;
+	T * a = new T[cpy._length];
+	_array = a;
+	this = cpy;
 }
 
-template <class T>
+template <typename T>
 Array<T>::~Array()
 {
-	//delete _array[_length];
-	//delete *this;
 }
 
-template <class T>
+template <typename T>
+unsigned int Array<T>::size()
+{
+	size_t i;
+	for (i = 0; _array[i]; i++)
+		;
+	return i;
+}
+
+template <typename T>
 const Array<T> & Array<T>::operator=(const Array & rhs)
 {
 	if (this == &rhs)
 		return *this;
-	*this->_array = rhs->_array;
-	*this->_length = rhs->_length;
+	this->_length = rhs._length;
+	for (size_t i = 0; i < this->_length; i++)
+		this->_array[i] = rhs._array[i];
+	return *this;
 }
-
-template <class T>
-const T & Array<T>::getArray(){ return _array; }
