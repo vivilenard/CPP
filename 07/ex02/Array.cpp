@@ -23,14 +23,15 @@ Array<T>::Array(const Array & cpy): _length(cpy._length)
 template <typename T>
 Array<T>::~Array()
 {
-	delete this->_array;
+	delete [] this->_array;
 }
 
 template <typename T>
 Array<T> & Array<T>::operator=(const Array<T> & rhs)
 {
-	//std::cout << "Assignment operator called" << std::endl;
-	delete this->_array;
+	if (PRINT)
+		std::cout << "Assignment operator called" << std::endl;
+	delete [] _array;
 	this->_length = rhs._length;
 	this->_array = new T[rhs._length];
 	for (size_t i = 0; i < this->_length; i++)
@@ -41,7 +42,8 @@ Array<T> & Array<T>::operator=(const Array<T> & rhs)
 template <typename T>
 T & Array<T>::operator[](const unsigned int rhs) const
 {
-	//std::cout << "Subscript operator called" << std::endl;
+	if (PRINT)
+		std::cout << "Subscript operator called" << std::endl;
 	if (rhs >= _length)
 		throw (IndexTooHighException());
 	return this->_array[rhs];
