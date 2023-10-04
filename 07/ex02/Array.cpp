@@ -3,56 +3,46 @@
 template <typename T>
 Array<T>::Array(): _length(0)
 {
+	_array = new T[_length];
 }
 
 template <typename T>
 Array<T>::Array(unsigned int n): _length(n)
 {
-	T * a = new T[n];
-	_array = a;
+	_array = new T[n];
 }
 
 template <typename T>
-Array<T>::Array(const Array & cpy)
+Array<T>::Array(const Array & cpy): _length(cpy._length)
 {
-	T * a = new T[cpy._length];
-	_array = a;
-	this = cpy;
+	_array = new T[_length];
+	for (size_t i = 0; i < this->_length; i++)
+		this->_array[i] = cpy._array[i];
 }
 
 template <typename T>
 Array<T>::~Array()
 {
+	delete this->_array;
 }
 
 template <typename T>
-unsigned int Array<T>::size()
+Array<T> & Array<T>::operator=(const Array<T> & rhs)
 {
-	size_t i;
-	for (i = 0; _array[i]; i++)
-		;
-	return i;
-}
-
-template <typename T>
-const Array<T> & Array<T>::operator=(const Array & rhs)
-{
-	if (this == &rhs)
-		return *this;
+	//std::cout << "Assignment operator called" << std::endl;
+	delete this->_array;
 	this->_length = rhs._length;
+	this->_array = new T[rhs._length];
 	for (size_t i = 0; i < this->_length; i++)
 		this->_array[i] = rhs._array[i];
 	return *this;
 }
 
-// template <typename T>
-// const size_t & Array<T>::operator=(const size_t & rhs)
-// {
-	
-// }
-
 template <typename T>
-T & Array<T>::operator[](const size_t rhs)
+T & Array<T>::operator[](const unsigned int rhs) const
 {
+	//std::cout << "Subscript operator called" << std::endl;
+	if (rhs >= _length)
+		throw (IndexTooHighException());
 	return this->_array[rhs];
 }

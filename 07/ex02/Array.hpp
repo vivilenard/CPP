@@ -15,14 +15,16 @@ class Array
 		Array(const Array & cpy);
 		~Array();
 
-		unsigned int size();
-		const Array & operator=(const Array & rhs);
-		//const size_t & operator=(const size_t & rhs);
-		T & operator[](const size_t rhs);
+		Array & operator=(const Array & rhs);
+		T & operator[](const unsigned int rhs) const;
 
-		const T & getArray() { return _array; };
-		unsigned int getLength() { return _length; };
+		unsigned int size() { return _length; };
 
+		class IndexTooHighException: public std::exception
+		{
+			public:
+				const char *what() const throw(){ return "Index too high! ";};
+		};
 };
 
 #endif

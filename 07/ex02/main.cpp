@@ -14,12 +14,14 @@
 
 int main()
 {
-	Array<int> *a = new Array<int>(8);
-	std::cout << a->getLength() << std::endl;
+	Array<int> b(8);
+	Array<int> a(b);
 
-	a[0] = 6; a[1] = 9; //a[2] = 7;
-	// for (int i = 0; i < 3; i++)
-	// 	std::cout << a[i];
-	// std::cout << std::endl;
+	std::cout << a.size() << std::endl;
+	a[0] = 6; a[1] = 9; a[2] = 7;
+	//std::cout << a[0] << std::endl;
+	for (size_t i = 0; i < a.size(); i++)
+		std::cout << a[i] << std::endl;
+	std::cout << std::endl;
 	return 0;
 }
