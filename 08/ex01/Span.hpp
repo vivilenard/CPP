@@ -2,27 +2,24 @@
 #define SPAN_HPP
 
 #include <iostream>
-#include <vector>
-#include <list>
+#include <set>
+
 class Span
 {
+	public:
+		Span();
+		Span(size_t n);
+		Span(const Span & rhs);
+		~Span();
+
+		void	addNumber(int i);
+		void	printSet();
+		int	shortestSpan();
+		int	longestSpan();
+
 	private:
 		size_t			_n;
-		std::list <int>	_arr;
-	public:
-		Span(){};
-		Span(size_t n): _n(n)
-			{};
-		Span(const Span & rhs): _n(rhs._n), _arr(rhs._arr)
-			{};
-		~Span(){};
-		//add assignment
-		void	addNumber(int i);
+		std::set<int>	_set;
 };
-
-void	Span::addNumber(int i)
-{
-	_arr.push_front(i);
-}
 
 #endif
