@@ -2,6 +2,7 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <vector>
 #include <set>
 
 class Span
@@ -13,9 +14,10 @@ class Span
 		~Span();
 
 		void	addNumber(int i);
+		void	addNumbers();
 		void	printSet();
-		int	shortestSpan();
-		int	longestSpan();
+		int		shortestSpan();
+		int		longestSpan();
 
 	private:
 		size_t			_n;

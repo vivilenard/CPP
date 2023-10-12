@@ -17,26 +17,36 @@ void	Span::addNumber(int i)
 	_set.insert(i);
 }
 
-void	Span::printSet()
+void	Span::addNumbers()
 {
-	for(std::set<int>::iterator itr = _set.begin(); itr != _set.end(); itr++)
-		std::cout << *itr << std::endl;
 }
 
-int	Span::shortestSpan()
+void	Span::printSet()
 {
-	//std::set<int>::iterator itr = _set.begin();
-	if (_set.size() < 2)
-		return (-1);
-	// for (itr; itr != _set.end(); itr++)
-	// 	;
-
-	return (*(_set.rbegin()) - *(_set.begin()));
+	std::cout << "Set: " << std::endl;
+	for(std::set<int>::iterator itr = _set.begin(); itr != _set.end(); ++itr)
+		std::cout << *itr << std::endl;
 }
 
 int	Span::longestSpan()
 {
 	if (_set.size() < 2)
 		return (-1);
-	return (1);
+	return (*(_set.rbegin()) - *(_set.begin()));
+}
+
+int	Span::shortestSpan()
+{
+	int shortest_span = 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2;
+	if (_set.size() < 2)
+		return (-1);
+	std::set<int>::iterator itr = _set.begin();
+	while (++itr != _set.end())
+	{
+		int span = *itr - *--itr;
+		if (span < shortest_span) shortest_span = span;
+		itr++;
+		//std::cout << *itr << " " << span << std::endl;
+	}
+	return (shortest_span);
 }
