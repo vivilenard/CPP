@@ -14,11 +14,23 @@ Span::~Span()
 
 void	Span::addNumber(int i)
 {
+	if (_set.size() >= _n)
+	{
+		std::cout << "Max amount of numbers reached" << std::endl;
+		return;
+	}
 	_set.insert(i);
 }
 
-void	Span::addNumbers()
+void	Span::addNumbers(size_t amount)
 {
+	size_t i = 0;
+	int	highestNumber = 100;
+	while (i <= amount && _set.size() <= _n)
+	{
+		_set.insert(rand() % highestNumber);
+		i++;
+	}
 }
 
 void	Span::printSet()
@@ -37,7 +49,7 @@ int	Span::longestSpan()
 
 int	Span::shortestSpan()
 {
-	int shortest_span = 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2;
+	int shortest_span = INT_MAX;
 	if (_set.size() < 2)
 		return (-1);
 	std::set<int>::iterator itr = _set.begin();
@@ -46,7 +58,6 @@ int	Span::shortestSpan()
 		int span = *itr - *--itr;
 		if (span < shortest_span) shortest_span = span;
 		itr++;
-		//std::cout << *itr << " " << span << std::endl;
 	}
 	return (shortest_span);
 }

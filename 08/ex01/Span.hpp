@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <stdlib.h>
+#include <limits.h>
 
 class Span
 {
@@ -14,7 +16,7 @@ class Span
 		~Span();
 
 		void	addNumber(int i);
-		void	addNumbers();
+		void	addNumbers(size_t amount);
 		void	printSet();
 		int		shortestSpan();
 		int		longestSpan();
