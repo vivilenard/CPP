@@ -7,7 +7,6 @@
 #include <iostream>
 
 template< class T, class Container = std::deque<T> >
-
 class MutantStack: public std::stack<T, Container>
 {
 	public:

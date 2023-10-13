@@ -5,25 +5,31 @@
 #include <vector>
 #include <set>
 #include <stdlib.h>
-#include <limits.h>
 
 class Span
 {
+	private:
+		unsigned int	_n;
+		std::set<int>	_set;
 	public:
 		Span();
-		Span(size_t n);
+		Span(unsigned int n);
 		Span(const Span & rhs);
 		~Span();
 
 		void	addNumber(int i);
-		void	addNumbers(size_t amount);
+		void	addNumbers(unsigned int amount);
 		void	printSet();
 		int		shortestSpan();
 		int		longestSpan();
 
-	private:
-		size_t			_n;
-		std::set<int>	_set;
+		class	ArrayTooSmallException: public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
+
+		Span & operator=(const Span & rhs);
 };
 
 #endif
