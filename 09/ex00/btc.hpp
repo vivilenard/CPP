@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <exception>
+#include <map>
+#include <fstream>
 
 class InputException: public std::exception
 {
