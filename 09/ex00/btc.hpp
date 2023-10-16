@@ -5,6 +5,8 @@
 #include <exception>
 #include <map>
 #include <fstream>
+#include <sstream>
+#include <string>
 
 class InputException: public std::exception
 {
