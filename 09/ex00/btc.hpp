@@ -13,10 +13,10 @@
 
 class InputException: public std::exception
 {
-  virtual const char* what() const throw()
-  {
-    return "Input Error: File doesnt open";
-  }
+	virtual const char* what() const throw()
+	{
+		return "Input Error: File doesnt open";
+	}
 };
 
 #endif
