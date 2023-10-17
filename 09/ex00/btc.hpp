@@ -8,6 +8,7 @@
 #include <sstream>
 #include <string>
 #include <algorithm>
+#include <iterator>
 
 class InputException: public std::exception
 {
