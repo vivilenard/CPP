@@ -9,6 +9,7 @@
 #include <string>
 #include <algorithm>
 #include <iterator>
+#include <ctime>
 
 class InputException: public std::exception
 {

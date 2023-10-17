@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:40:28 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/17 11:04:06 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/17 13:25:16 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ int	AddToMap(std::map<std::string, double> & m, std::string line)
 	return 0;
 }
 
+int ValidDate(std::string s)
+{
+	struct tm time;
+
+	if (strptime(s.c_str(), "%Y-%m-%d", &time))
+		return 1;
+	return 0;
+}
+
 int ParseInput(std::string line, std::string& half1, double & d)
 {
 	std::string half2;
@@ -55,6 +64,8 @@ int ParseInput(std::string line, std::string& half1, double & d)
 	half1 = line.substr(0, pos_del);
 	half2 = line.substr(pos_del + jump, pos_end - pos_del);
 
+	if (!ValidDate(half1))
+		return std::cout << "Date is not valid." << std::endl, -1;
 	std::stringstream ss(half2);
 	ss >> d;
 	if (d < 0)
@@ -64,13 +75,19 @@ int ParseInput(std::string line, std::string& half1, double & d)
 	return 0;
 }
 
-std::string GetClosestDate(std::map<std::string, double>m, std::string half1)
+std::string GetClosestDate(std::map<std::string, double>m, std::string date)
 {
-	std::map<std::string, double>::iterator it = m.lower_bound(half1);
+	std::map<std::string, double>::iterator it = m.lower_bound(date);
+	std::map<std::string, double>::iterator begin = m.begin();
+	if (it == begin)
+		return "";
 	(--it);
 	if (m.count(it->first))
-		return it->first;
-	return NULL;
+	{
+		date = it->first;
+		return date;
+	}
+	return "";
 }
 
 int	MatchDate(std::map<std::string, double>m, std::string line)
@@ -82,6 +99,8 @@ int	MatchDate(std::map<std::string, double>m, std::string line)
 	std::map<std::string, double>::iterator it = m.find(date);
 	if (it == m.end())
 		date = GetClosestDate(m, date);
+	if (date.size() == 0)
+		return std::cout << "Error: At this date the Bitcoin wasn't born yet." << std::endl, 0;
 	std::cout << date << " => " << d << " = " << m[date] * d << std::endl;
 	return 0;
 }
