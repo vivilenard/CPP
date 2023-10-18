@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:15:11 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/18 11:11:43 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:22:18 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,21 @@ int		parse(std::string & s)
 	return 1;
 }
 
-void	addToStack(std::stack<int> & s, char c)
+void	addToStack(std::stack<int> & s, int n)
 {
-	s.push(c);
+	std::cout << "add to top " << n << std::endl;
+	s.push(n);
+	std::cout << s.top() << std::endl;
 }
 
-int		isNumber(std::stack<int> & s, char c)
+int		isNumber(char c)
 {
 	if (isdigit(c))
 		return 1;
 	else return 0;
 }
 
-int		isOperator(std::stack<int> & s, char c)
+int		isOperator(char c)
 {
 	static const char * op = "+-/*";
 	if (strchr(op, c))
@@ -40,9 +42,8 @@ int		isOperator(std::stack<int> & s, char c)
 	return 0;
 }
 
-void	operateStack(std::stack<int> & s, char c)
+void	operateStack()
 {
-	
 }
 
 int	RPN(std::string & str)
@@ -52,11 +53,10 @@ int	RPN(std::string & str)
 	std::stack<int> s;
 	for (size_t i = 0; i < str.size(); i++)
 	{
-		if (isNumber(s, str.at(i)))
-			addToStack(s, str.at(i));
-		else if (isOperator(s, str.at(i)))
-			operateStack(s, str.at(i));
-
+		if (isNumber(str.at(i)))
+			addToStack(s, str.at(i) - '0');
+		else if (isOperator(str.at(i)))
+			operateStack();
 	}
 	return 1;
 }
@@ -68,5 +68,6 @@ int	main(int argc, char **argv)
 		return 0;
 	std::string s(argv[1]);
 	RPN(s);
+	
 	return 0;
 }
