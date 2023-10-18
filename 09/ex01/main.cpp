@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:15:11 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/18 11:46:43 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/18 13:16:55 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		parse(std::string & s)
 {
-	//std::cout << "parse" << std::endl;
 	if (s.find_first_not_of("0123456789+-*/ /t") != std::string::npos)
 		return 0;
 	return 1;
@@ -22,9 +21,7 @@ int		parse(std::string & s)
 
 void	addToStack(std::stack<double> & s, int n)
 {
-	//std::cout << "add to top " << n << std::endl;
 	s.push(n);
-	//std::cout << s.top() << std::endl;
 }
 
 int		isNumber(char c)
@@ -44,10 +41,10 @@ int		isOperator(char c)
 
 int	operateStack(std::stack<double> & s, char c)
 {
+	if (s.size() <= 1)
+		return 0;
 	double val2 = s.top();
 	s.pop();
-	if (s.empty())
-		return 0;
 	double val1 = s.top();
 	s.pop();
 	if (c == '*')
@@ -58,7 +55,6 @@ int	operateStack(std::stack<double> & s, char c)
 		s.push(val1 + val2);
 	else if (c == '-')
 		s.push(val1 - val2);
-	//std::cout << "pushed: " << s.top() << std::endl;
 	return 1;
 }
 
@@ -86,6 +82,5 @@ int	main(int argc, char **argv)
 		return 0;
 	std::string s(argv[1]);
 	RPN(s);
-	
 	return 0;
 }
