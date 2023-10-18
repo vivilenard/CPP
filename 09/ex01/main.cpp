@@ -6,53 +6,57 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:15:11 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/18 10:44:57 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:11:43 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-int	parse(int argc, char **argv)
+int		parse(std::string & s)
 {
 	std::cout << "parse" << std::endl;
-	for (int i = 1; i < argc; ++i)
-	{
-		std::string s(argv[i]);
-		std::cout << s << std::endl;
-		if (s.find_first_not_of("0123456789+-/*") != std::string::npos)
-			return 0;
-	}
-	return 1;
-}
-
-int	addToStack(std::stack<int> & s,int i, std::string str)
-{
-	int	i; char c;
-	std::stringstream ss(str);
-	if (str.find_first_of("1234567890") != std::string::npos)
-	{
-		ss >> i;
-		s.push(i);
-	}
-	else if (str.find_first_of("+-/*"))
-	{
-		ss >> c;
-	}
-	else
+	if (s.find_first_not_of("0123456789+-*/ /t") != std::string::npos)
 		return 0;
 	return 1;
 }
 
-int	RPN(int argc, char **argv)
+void	addToStack(std::stack<int> & s, char c)
 {
-	if (!parse(argc, argv))
+	s.push(c);
+}
+
+int		isNumber(std::stack<int> & s, char c)
+{
+	if (isdigit(c))
+		return 1;
+	else return 0;
+}
+
+int		isOperator(std::stack<int> & s, char c)
+{
+	static const char * op = "+-/*";
+	if (strchr(op, c))
+		return 1;
+	return 0;
+}
+
+void	operateStack(std::stack<int> & s, char c)
+{
+	
+}
+
+int	RPN(std::string & str)
+{
+	if (!parse(str))
 		return std::cout << "Input Error" << std::endl, 0;
 	std::stack<int> s;
-
-	for (int i = 1; i < argc; ++i)
+	for (size_t i = 0; i < str.size(); i++)
 	{
-		std::string s(argv[i]);
-		addToStack(i, s);
+		if (isNumber(s, str.at(i)))
+			addToStack(s, str.at(i));
+		else if (isOperator(s, str.at(i)))
+			operateStack(s, str.at(i));
+
 	}
 	return 1;
 }
@@ -60,8 +64,9 @@ int	RPN(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	if (argc < 2)
+	if (argc != 2)
 		return 0;
-	RPN(argc, argv);
+	std::string s(argv[1]);
+	RPN(s);
 	return 0;
 }
