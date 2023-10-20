@@ -1,4 +1,4 @@
-NAME = btc
+NAME = PmergeMe
 CC = c++
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
