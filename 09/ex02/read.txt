@@ -15,3 +15,8 @@ To do:
 
 
 
+So:
+- vector of array[2]
+- sort vector
+- copy a numbers in main vector
+- insert b numbers in main vector
