@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 13:34:36 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/25 17:30:17 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/25 18:28:24 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,17 +122,29 @@ void	sortLowest(std::vector<int> & arr, std::vector< std::vector<int> > pairs)
 		std::cout << jac[i] << std::endl;
 	std::cout << "sort lowesst" << std::endl;
 	arr.insert(arr.begin(), pairs[0][1]);
-	for (size_t i = 1; i < pairs.size(); i++)
+	for (size_t i = 1; i < 3; i++)
 	{
-		//std::cout << "pairs size: " << pairs.size() << ", jac: " << jac[i] << " " << arr[0] << pairs.size() << std::endl;
-		int n = pairs[jac[i]][1]; std::cout << n << " at " << jac[i] << std::endl;
-		for (int j = jac[i]; j >= 0; j--)
-			if (n <= arr[j])
-			{
-				arr.insert(arr.begin() + j, n);
-				break;
-			}
+		int n = jac[i];
+		int num = pairs[n][1];
+		while (num < arr[n] && n > 0)
+		{
+			n--;
+			std::cout << "number: " << num << " n: " << n << " array[n] " << arr[n] << std::endl;
+		}
+		arr.insert(arr.begin() + n, num);
+		
 	}
+	// for (size_t i = 1; i < pairs.size(); i++)
+	// {
+	// 	//std::cout << "pairs size: " << pairs.size() << ", jac: " << jac[i] << " " << arr[0] << pairs.size() << std::endl;
+	// 	int n = pairs[jac[i]][1]; std::cout << n << " at " << jac[i] << std::endl;
+	// 	for (int j = jac[i]; j >= 0; j--)
+	// 		if (n <= arr[j])
+	// 		{
+	// 			arr.insert(arr.begin() + j, n);
+	// 			break;
+	// 		}
+	// }
 }
 
 int main(int argc, char **argv)
