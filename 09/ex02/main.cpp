@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 13:34:36 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/23 15:24:49 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/25 17:30:17 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,51 @@ int	Jac(int i)
 	return Jac(i - 1) + 2 * Jac(i - 2);
 }
 
+std::vector<int> JacOrder(int nPairs)
+{
+	std::vector<int> j;
+	j.push_back(0);
+	j.push_back(1);
+	//std::cout << j[0] << std::endl;
+	//std::cout << j[1] << std::endl;
+	for (size_t i = 3; j.size() < (size_t) nPairs; ++i)
+	{
+		int num = Jac(i);
+		if (num < nPairs)
+		{
+			j.push_back(num);
+			//std::cout << num << " " << Jac(i - 1) << std::endl;
+		}
+		while (--num > Jac(i - 1))
+		{
+			if (num < nPairs)
+			{
+				j.push_back(num);
+				//std::cout << num << " " << Jac(i - 1) << std::endl;
+			}
+		}
+		//std::cout << "loop" << std::endl;
+	}
+	return j;
+}
+
 void	sortLowest(std::vector<int> & arr, std::vector< std::vector<int> > pairs)
 {
+	std::vector<int> jac = JacOrder(pairs.size());
 	for (size_t i = 0; i < pairs.size(); i++)
+		std::cout << jac[i] << std::endl;
+	std::cout << "sort lowesst" << std::endl;
+	arr.insert(arr.begin(), pairs[0][1]);
+	for (size_t i = 1; i < pairs.size(); i++)
 	{
-		//add jacobsthal index to array
+		//std::cout << "pairs size: " << pairs.size() << ", jac: " << jac[i] << " " << arr[0] << pairs.size() << std::endl;
+		int n = pairs[jac[i]][1]; std::cout << n << " at " << jac[i] << std::endl;
+		for (int j = jac[i]; j >= 0; j--)
+			if (n <= arr[j])
+			{
+				arr.insert(arr.begin() + j, n);
+				break;
+			}
 	}
 }
 
@@ -100,12 +140,15 @@ int main(int argc, char **argv)
 	std::vector< std::vector<int> > pairs;
 	std::vector<int> arr;
 
+	if (argc <= 1)
+		return 0;
 	createPairArray(pairs, argc, argv);
 	sortPairArray(pairs);
 	sortHighest(arr, pairs);
 	sortLowest(arr, pairs);
 
 	//PRINT
+	std::cout << "---------" << std::endl;
 	for (int i = 0; i < (argc - 1) / 2; i++)
 		std::cout << pairs[i][0] << " " << pairs[i][1] << std::endl;
 	std::cout << "---------" << std::endl;
