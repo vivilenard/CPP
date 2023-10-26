@@ -1,6 +1,6 @@
 NAME = PmergeMe
 CC = c++
-SRC = main.cpp
+SRC = main.cpp SortVector.cpp Jacobsthal.cpp
 OBJ = $(SRC:.cpp=.o)
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
