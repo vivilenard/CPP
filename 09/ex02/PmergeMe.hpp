@@ -13,8 +13,8 @@
 int	                Jacobsthal(int i);
 std::vector<int>    JacOrder(int nPairs);
 
-int	SortVector(int argc, char **argv);
-int SortList(int argc, char **argv);
+std::vector<int>	SortVector(int argc, char **argv);
+std::list<int>		SortList(int argc, char **argv);
 
 
 #endif

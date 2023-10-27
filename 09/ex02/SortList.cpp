@@ -86,13 +86,13 @@ void	sortLowest(std::list<int> & arr, std::list< std::list<int> > pairs)
 	}
 }
 
-int SortList(int argc, char **argv)
+std::list<int> SortList(int argc, char **argv)
 {
 	std::list< std::list <int> > pairs;
 	std::list<int> arr;
 
 	if (argc <= 1)
-		return 0;
+		return arr;
 	createPairArray(pairs, argc, argv);
 	sortPairArray(pairs);
 
@@ -105,10 +105,10 @@ int SortList(int argc, char **argv)
 	// 	std::cout << *it << std::endl;
 	// std::cout << "-------------------" << std::endl;
 	sortLowest(arr, pairs);
-	std::cout << "-------------------" << std::endl;
-	for (std::list < int >::iterator it = arr.begin(); it != arr.end(); ++it)
-		std::cout << *it << std::endl;
-	return 0;
+	//std::cout << "-------------------" << std::endl;
+	// for (std::list < int >::iterator it = arr.begin(); it != arr.end(); ++it)
+	// 	std::cout << *it << std::endl;
+	return arr;
 }
 
 

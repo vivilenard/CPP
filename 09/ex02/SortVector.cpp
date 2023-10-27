@@ -86,13 +86,13 @@ void	sortLowest(std::vector<int> & arr, std::vector< std::vector<int> > pairs)
 	}
 }
 
-int	SortVector(int argc, char **argv)
+std::vector<int>	SortVector(int argc, char **argv)
 {
 	std::vector< std::vector<int> > pairs;
 	std::vector<int> arr;
 
 	if (argc <= 1)
-		return 0;
+		return arr;
 	createPairArray(pairs, argc, argv);
 	sortPairArray(pairs);
 	sortHighest(arr, pairs, argc, argv);
@@ -103,8 +103,9 @@ int	SortVector(int argc, char **argv)
 	// 	std::cout << pairs[i][0] << " " << pairs[i][1] << std::endl;
 	// std::cout << "---------" << std::endl;
 	sortLowest(arr, pairs);
-	std::cout << "---------" << std::endl;
-	for (size_t i = 0; i < arr.size(); i++)
-		std::cout << arr[i] << std::endl;
-	return 0;
+	//std::cout << "---------" << std::endl;
+	// for (size_t i = 0; i < arr.size(); i++)
+	// 	std::cout << arr[i] << " ";
+	// std::cout << std::endl;
+	return arr;
 }
