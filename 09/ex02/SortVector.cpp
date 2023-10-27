@@ -58,11 +58,18 @@ void	sortHighest(std::vector<int> & arr, std::vector< std::vector<int> > pairs, 
 		std::stringstream ss(argv[argc - 1]);
 		int num;
 		ss >> num;
-		for (size_t i = 0; i < arr.size(); i++)
+		size_t i = 0;
+		while (i < arr.size())
 		{
 			if (num < arr[i])
 			{
 				arr.insert(arr.begin() + i, num);
+				break;
+			}
+			i++;
+			if (i == arr.size() - 1)
+			{
+				arr.insert(arr.end(), num);
 				break;
 			}
 		}
