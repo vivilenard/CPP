@@ -47,7 +47,6 @@ void	sortPairArray(std::vector< std::vector<int> > & pairs)
 			}
 		}
 	}
-	
 }
 
 void	sortHighest(std::vector<int> & arr, std::vector< std::vector<int> > pairs, int argc, char **argv)

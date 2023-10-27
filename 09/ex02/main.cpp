@@ -14,6 +14,7 @@
 
 int main(int argc, char **argv)
 {
-	SortVector(argc, argv);
-	//SortList(argc, argv);
+	//SortVector(argc, argv);
+	std::cout << "SORT LIST" << std::endl;
+	SortList(argc, argv);
 }
