@@ -5,7 +5,9 @@
 #include <vector>
 #include <list>
 #include <sstream>
-#include <array>
+#include <ctime>
+#include <iostream>
+#include <iomanip>
 
 //Jacobsthal
 int	                Jacobsthal(int i);
