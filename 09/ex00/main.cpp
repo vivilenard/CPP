@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:40:28 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/17 14:34:31 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/30 10:51:56 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int ParseInput(std::string line, std::string& half1, double & d)
 	half2 = line.substr(pos_del + jump, pos_end - pos_del);
 
 	if (!ValidDate(half1))
-		return std::cout << "Date is not valid." << std::endl, -1;
+		return std::cout << "Error: Date is not valid => " << half1 << std::endl, -1;
 	std::stringstream ss(half2);
 	ss >> d;
 	if (d < 0)
@@ -107,6 +107,8 @@ int	MatchDate(std::map<std::string, double>m, std::string line)
 
 int	main(int argc, char **argv)
 {
+	try 
+	{
 	std::ifstream file_data;
 	std::ifstream file_input;
 	std::map<std::string, double> m;
@@ -119,5 +121,11 @@ int	main(int argc, char **argv)
 		MatchDate(m, line);
 	file_data.close();
 	file_input.close();
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	return 0;
+	
 }
