@@ -1,2 +1,0 @@
-stack
-https://www.dcode.fr/reverse-polish-notation
