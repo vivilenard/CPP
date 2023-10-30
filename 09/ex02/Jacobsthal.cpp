@@ -1,6 +1,5 @@
 #include "PmergeMe.hpp"
 
-
 int	Jacobsthal(int i)
 {
 	if (i == 0)

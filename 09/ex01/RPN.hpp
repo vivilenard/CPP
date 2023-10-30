@@ -6,4 +6,6 @@
 #include <string>
 #include <sstream>
 
+int	RPN(std::string & str);
+
 #endif

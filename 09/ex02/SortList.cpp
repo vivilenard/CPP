@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+
 void	addPair(std::list< std::list<int> > & pairs, char *s1, char *s2)
 {
 	std::list<int> pair;
@@ -61,6 +62,8 @@ void	sortHighest(std::list<int> & arr, std::list< std::list<int> > pairs, int ar
 			if (it == arr.end())
 				arr.insert(it, num);
 		}
+		if (argc == 2)
+			arr.push_back(num);
 	}
 }
 
@@ -98,33 +101,3 @@ std::list<int> SortList(int argc, char **argv)
 	sortLowest(arr, pairs);
 	return arr;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//std::list < std::list <int> >::iterator it2 = pairs.begin();
-	// for (std::list < std::list <int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
-	// {
-	//     it2 = it;
-	//    if (it != pairs.begin() && (*it).front() << (*it2++).front())
-	//    {
-	//     it.swap(it2);
-	//    }
-	// }

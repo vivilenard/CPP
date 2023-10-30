@@ -72,6 +72,8 @@ void	sortHighest(std::vector<int> & arr, std::vector< std::vector<int> > pairs, 
 				break;
 			}
 		}
+		if (argc == 2)
+			arr.push_back(num);
 	}
 }
 
@@ -94,6 +96,7 @@ std::vector<int>	SortVector(int argc, char **argv)
 
 	if (argc <= 1)
 		return arr;
+	arr.reserve(argc - 1);
 	createPairArray(pairs, argc, argv);
 	sortPairArray(pairs);
 	sortHighest(arr, pairs, argc, argv);
