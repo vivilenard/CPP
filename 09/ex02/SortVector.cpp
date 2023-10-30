@@ -22,6 +22,7 @@ void	addPair(std::vector< std::vector<int> > & pairs, char *s1, char *s2)
 	pairs.push_back(pair);
 }
 
+//Merge
 void	createPairArray(std::vector< std::vector<int> > & pairs, int argc, char **argv)
 {
 	int n = 0;
@@ -74,11 +75,11 @@ void	sortHighest(std::vector<int> & arr, std::vector< std::vector<int> > pairs, 
 	}
 }
 
+//Insert
 void	sortLowest(std::vector<int> & arr, std::vector< std::vector<int> > pairs)
 {
 	std::vector<int> jac = JacOrder(pairs.size());
-	arr.insert(arr.begin(), pairs[0][1]);
-	for (size_t i = 1; i < pairs.size(); i++)
+	for (size_t i = 0; i < pairs.size(); i++)
 	{
 		size_t c = 0;
 		while(c < arr.size() && pairs[jac[i]][1] > arr[c])	c++;
@@ -96,16 +97,6 @@ std::vector<int>	SortVector(int argc, char **argv)
 	createPairArray(pairs, argc, argv);
 	sortPairArray(pairs);
 	sortHighest(arr, pairs, argc, argv);
-
-	//PRINT
-	// std::cout << "---------" << std::endl;
-	// for (size_t i = 0; i < pairs.size(); i++)
-	// 	std::cout << pairs[i][0] << " " << pairs[i][1] << std::endl;
-	// std::cout << "---------" << std::endl;
 	sortLowest(arr, pairs);
-	//std::cout << "---------" << std::endl;
-	// for (size_t i = 0; i < arr.size(); i++)
-	// 	std::cout << arr[i] << " ";
-	// std::cout << std::endl;
 	return arr;
 }

@@ -67,8 +67,7 @@ void	sortHighest(std::list<int> & arr, std::list< std::list<int> > pairs, int ar
 void	sortLowest(std::list<int> & arr, std::list< std::list<int> > pairs)
 {
 	std::vector<int> jac = JacOrder(pairs.size());
-	arr.insert(arr.begin(), (*pairs.begin()).back());
-	for (size_t i = 1; i < pairs.size(); i++)
+	for (size_t i = 0; i < pairs.size(); i++)
 	{
 		std::list < std::list <int> >::iterator itr = pairs.begin();
 		for (int n = 0; n < jac[i]; n++)
@@ -95,19 +94,8 @@ std::list<int> SortList(int argc, char **argv)
 		return arr;
 	createPairArray(pairs, argc, argv);
 	sortPairArray(pairs);
-
-	// for (std::list < std::list <int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
-	// { std::cout << (*it).front() << ", " << (*it).back() << std::endl; }
-	// std::cout << "-------------------" << std::endl;
-
 	sortHighest(arr, pairs, argc, argv);
-	// for (std::list < int >::iterator it = arr.begin(); it != arr.end(); ++it)
-	// 	std::cout << *it << std::endl;
-	// std::cout << "-------------------" << std::endl;
 	sortLowest(arr, pairs);
-	//std::cout << "-------------------" << std::endl;
-	// for (std::list < int >::iterator it = arr.begin(); it != arr.end(); ++it)
-	// 	std::cout << *it << std::endl;
 	return arr;
 }
 
