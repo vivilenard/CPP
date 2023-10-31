@@ -61,6 +61,8 @@ int	RPN(std::string & str)
 			if (!operateStack(s, str.at(i)))
 				return std::cout << "Wrong Input" << std::endl, 0;
 	}
+	if (s.size() != 1)
+		return std::cout << "You did not enter the right amount of numbers/signs" << std::endl, 0;
 	std::cout << s.top() << std::endl;
 	return 1;
 }
