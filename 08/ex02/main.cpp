@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:24:33 by vlenard           #+#    #+#             */
-/*   Updated: 2023/10/13 14:35:54 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/10/13 14:40:10 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main()
 		std::cout << *it << std::endl;
 		++it;
 	}
-	std::stack<int> s2(mstack);
+	//std::stack<int> s2(mstack);
 
 	std::cout << "More tests:" << std::endl;
 	std::stack<int> s;
